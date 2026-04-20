@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import styles from "./Hero.module.css";
 
 const roles = [
@@ -65,29 +66,19 @@ export default function Hero() {
 
   return (
     <section id="home" className={styles.hero}>
-      {/* Animated mesh gradient background */}
-      <div className={styles.meshBg}>
-        <motion.div
-          className={`${styles.blob} ${styles.blob1}`}
-          animate={{ x: [0, 60, -30, 0], y: [0, -40, 60, 0], scale: [1, 1.15, 0.95, 1] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className={`${styles.blob} ${styles.blob2}`}
-          animate={{ x: [0, -50, 40, 0], y: [0, 60, -30, 0], scale: [1, 0.9, 1.2, 1] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-        <motion.div
-          className={`${styles.blob} ${styles.blob3}`}
-          animate={{ x: [0, 40, -60, 0], y: [0, -50, 30, 0], scale: [1, 1.1, 0.85, 1] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-        />
+      {/* Aurora background */}
+      <div className={styles.auroraBg}>
+        <div className={styles.auroraLayer1} />
+        <div className={styles.auroraLayer2} />
+        <div className={styles.auroraLayer3} />
+        <div className={styles.auroraLayer4} />
         <div className={styles.gridOverlay} />
-        <div className={styles.noiseOverlay} />
+        <div className={styles.vignette} />
       </div>
 
       {/* Content */}
       <div className={styles.content}>
+        <div className={styles.heroInner}>
         <motion.div
           className={styles.textBlock}
           variants={containerVariants}
@@ -155,6 +146,28 @@ export default function Hero() {
             </span>
           </motion.div>
         </motion.div>
+
+        {/* Profile Photo */}
+        <motion.div
+          className={styles.photoBlock}
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: easing, delay: 0.3 }}
+        >
+          <div className={styles.photoRing}>
+            <div className={styles.photoInner}>
+              <Image
+                src="/images/tariq.jpeg"
+                alt="Tariq Hamza Ahmad"
+                width={340}
+                height={340}
+                className={styles.photo}
+                priority
+              />
+            </div>
+          </div>
+        </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

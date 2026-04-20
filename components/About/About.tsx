@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import styles from "./About.module.css";
 
 const easing = [0.25, 0.46, 0.45, 0.94] as [number, number, number, number];
@@ -43,13 +44,13 @@ export default function About() {
           >
             <div className={styles.photoWrapper}>
               <div className={styles.photoFrame}>
-                <div className={styles.photoPlaceholder}>
-                  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.3 }}>
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                  </svg>
-                  <span>Your Photo Here</span>
-                </div>
+                <Image
+                  src="/images/tariq.jpeg"
+                  alt="Tariq Hamza Ahmad"
+                  fill
+                  className={styles.photo}
+                  priority
+                />
               </div>
               <div className={styles.photoBadge}>
                 <span className={styles.availableDot} />
